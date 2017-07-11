@@ -1,0 +1,43 @@
+#define lpin_message 3 //digital
+#define lpin_women 4 //digital
+#define lpin_data 5 //digital
+
+#define door_pin 2 //digital
+#define led_pin 13 //digital
+boolean doorClosed = false;
+
+
+void setup() {
+  pinMode(lpin_message, OUTPUT);
+  pinMode(lpin_women, OUTPUT);
+  pinMode(lpin_data, OUTPUT);
+
+  pinMode(door_pin, INPUT);
+  pinMode(led_pin, OUTPUT);
+
+  Serial.begin(9600);
+}
+
+void loop() {
+  //door
+  if (digitalRead(door_pin)==HIGH)
+    doorClosed = true;
+  else
+    doorClosed = false;
+
+  if (doorClosed)
+  {
+    digitalWrite(led_pin, HIGH);  
+  }
+  else
+    digitalWrite(led_pin, LOW);
+  
+  /*delay(3000);
+  digitalWrite(lpin_message, LOW);
+  digitalWrite(lpin_women, LOW);
+  digitalWrite(lpin_data, LOW);
+  delay(3000);
+  digitalWrite(lpin_message, HIGH);
+  digitalWrite(lpin_women, HIGH);
+  digitalWrite(lpin_data, HIGH);*/
+}
